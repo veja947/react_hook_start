@@ -5,10 +5,8 @@ import './IngredientForm.css';
 
 const IngredientForm = React.memo(props => {
 
-    let [inputState, setInputState] = useState({
-        title: 'default title',
-        amount: '0'
-    })
+    const [enteredTitle, setEnteredTitle] = useState('default title');
+    const [enteredAmount, setEnteredAmount] = useState('0');
 
 
     const submitHandler = event => {
@@ -23,25 +21,17 @@ const IngredientForm = React.memo(props => {
                     <div className="form-control">
                         <label htmlFor="title">Name</label>
                         <input type="text" id="title"
-                               value={inputState.title}
+                               value={enteredTitle}
                                onChange={event => {
-                                   const $newTitle = event.target.value;
-                                   setInputState(prevState => ({
-                                       title: $newTitle,
-                                       amount: prevState.amount
-                                   }));
+                                   setEnteredTitle(event.target.value);
                                }}/>
                     </div>
                     <div className="form-control">
                         <label htmlFor="amount">Amount</label>
                         <input type="number" id="amount"
-                               value={inputState.amount}
+                               value={enteredAmount}
                                onChange={event => {
-                                   const $newAmount = event.target.value;
-                                   setInputState(prevState => ({
-                                       title: prevState.title,
-                                       amount: $newAmount
-                                   }))
+                                   setEnteredAmount(event.target.value)
                                }}/>
                     </div>
                     <div className="ingredient-form__actions">
